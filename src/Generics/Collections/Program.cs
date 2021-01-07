@@ -7,28 +7,27 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            var queue = new Queue<Employee>();
-            queue.Enqueue(new Employee() { Name = "Ash" });
-            queue.Enqueue(new Employee() { Name = "Judy" });
-            queue.Enqueue(new Employee() { Name = "Joe" });
+            var uniqueSetValueType = new HashSet<int>();
+            uniqueSetValueType.Add(5);
+            uniqueSetValueType.Add(12);
+            uniqueSetValueType.Add(5);
 
-            while(queue.Count > 0 )
+            foreach (var item in uniqueSetValueType)
             {
-                var employee = queue.Dequeue();
-                Console.WriteLine(employee.Name);
+                Console.WriteLine(item);
             }
 
             Console.WriteLine("----------");
 
-            var stack = new Stack<Employee>();
-            stack.Push(new Employee() { Name = "Ash" });
-            stack.Push(new Employee() { Name = "Judy" });
-            stack.Push(new Employee() { Name = "Joe" });
+            var uniqueSet = new HashSet<Employee>();
+            var employee = new Employee() { Name = "Mary Jane" };
+            uniqueSet.Add(new Employee(){Name = "Gustavo"});
+            uniqueSet.Add(employee);
+            uniqueSet.Add(employee);
 
-            while (stack.Count > 0)
+            foreach (var item in uniqueSet)
             {
-                var employee = stack.Pop();
-                Console.WriteLine(employee.Name);
+                Console.WriteLine(item.Name);
             }
         }
     }
