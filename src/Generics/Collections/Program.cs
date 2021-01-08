@@ -7,27 +7,22 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            var uniqueSetValueType = new HashSet<int>();
-            uniqueSetValueType.Add(5);
-            uniqueSetValueType.Add(12);
-            uniqueSetValueType.Add(5);
+            var list = new LinkedList<int>();
 
-            foreach (var item in uniqueSetValueType)
+            list.AddFirst(18);
+            list.AddLast(21);
+
+            var first = list.First;
+            var last = list.Last;
+            list.AddAfter(first, 19);
+            list.AddBefore(last, 20);
+
+            var node = list.First;
+
+            while (node != null)
             {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("----------");
-
-            var uniqueSet = new HashSet<Employee>();
-            var employee = new Employee() { Name = "Mary Jane" };
-            uniqueSet.Add(new Employee(){Name = "Gustavo"});
-            uniqueSet.Add(employee);
-            uniqueSet.Add(employee);
-
-            foreach (var item in uniqueSet)
-            {
-                Console.WriteLine(item.Name);
+                Console.WriteLine(node.Value);
+                node = node.Next;
             }
         }
     }
