@@ -7,7 +7,7 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            var employeesByDepartment = new Dictionary<string, List<Employee>>();
+            var employeesByDepartment = new SortedDictionary<string, List<Employee>>();
 
             employeesByDepartment.Add("Software", 
                 new List<Employee>() { 
