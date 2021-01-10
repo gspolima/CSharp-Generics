@@ -7,22 +7,31 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            var list = new LinkedList<int>();
+            var employeesByDepartment = new Dictionary<string, List<Employee>>();
 
-            list.AddFirst(18);
-            list.AddLast(21);
+            employeesByDepartment.Add("Software", 
+                new List<Employee>() { 
+                    new Employee() { DepartmentId = 2, Name = "Gustavo" } });
 
-            var first = list.First;
-            var last = list.Last;
-            list.AddAfter(first, 19);
-            list.AddBefore(last, 20);
+            employeesByDepartment["Software"].Add(
+                new Employee() { DepartmentId = 2, Name = "Pedro" });
 
-            var node = list.First;
+            employeesByDepartment["Software"].Add(
+                new Employee() { DepartmentId = 2, Name = "Antonio" });
 
-            while (node != null)
+            employeesByDepartment.Add("Legal",
+                new List<Employee>() {
+                    new Employee() { DepartmentId = 2, Name = "Mary" } });
+
+            foreach (var item in employeesByDepartment)
             {
-                Console.WriteLine(node.Value);
-                node = node.Next;
+                foreach (var employee in item.Value)
+                {
+                    Console.WriteLine(
+                        $"Department : {item.Key}" +
+                        $"{Environment.NewLine}{"Employee", -10} : {employee.Name}" +
+                        $"{Environment.NewLine}-----------------------");
+                }
             }
         }
     }
