@@ -8,7 +8,7 @@ namespace Generics.Tests
     public class StackTests
     {
         [Fact]
-        public void Can_Peek_At_Next_Item()
+        public void Can_Peek_At_Next_Item_Without_Removing()
         {
             var stack = new Stack<int>();
 
@@ -17,7 +17,8 @@ namespace Generics.Tests
             stack.Push(55);
 
             var expected = 55;
-            var actual = stack.Pop();
+            var actual = stack.Peek();
+            Assert.Equal(3, stack.Count);
             Assert.Equal(expected, actual);
         }
 
