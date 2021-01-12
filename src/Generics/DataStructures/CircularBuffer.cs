@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures
 {
-    class CircularBuffer<T>
+    class CircularBuffer<T> : IBuffer<T>
     {
         private T[] buffer;
         private int start;
