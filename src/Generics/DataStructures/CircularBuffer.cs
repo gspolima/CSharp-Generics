@@ -4,52 +4,24 @@ using System.Text;
 
 namespace DataStructures
 {
-    class CircularBuffer<T> : IBuffer<T>
+    public class CircularBuffer<T> : Buffer<T>
     {
-        private T[] buffer;
-        private int start;
-        private int end;
+        protected int capacity;
 
-        public CircularBuffer() : this(capacity: 10)
+        public bool IsFull => queue.Count == this.capacity;
+
+        public CircularBuffer(int capacity = 0)
         {
+            this.capacity = capacity;
         }
 
-        public CircularBuffer(int capacity)
+        public override void Write(T value)
         {
-            this.buffer = new T[capacity + 1];
-            this.start = 0;
-            this.end = 0;
-        }
-        public void Write(T value)
-        {
-            buffer[end] = value;
-            end = (end + 1) % buffer.Length;
-            if (end == start)
+            base.Write(value);
+            if (queue.Count > capacity)
             {
-                start = (start + 1) % buffer.Length;
+                queue.Dequeue();
             }
-        }
-
-        public T Read()
-        {
-            var result = buffer[start];
-            start = (start + 1) % buffer.Length;
-            return result;
-        }
-
-        public int Capacity
-        {
-            get { return buffer.Length; }
-        }
-
-        public bool IsEmpty
-        {
-            get { return end == start; }
-        }
-
-        public bool IsFull
-        {
-            get { return (end + 1) % buffer.Length == start; }
         }
     }
 }
