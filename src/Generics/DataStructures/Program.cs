@@ -6,7 +6,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            var circularBuffer = new CircularBuffer<double>();
+            var circularBuffer = new Buffer<double>();
 
             ProcessInput(circularBuffer);
             ProcessBuffer(circularBuffer);
