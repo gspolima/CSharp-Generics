@@ -6,16 +6,16 @@ namespace DataStructures
 {
     public class Buffer<T> : IBuffer<T>
     {
-        Queue<T> queue = new Queue<T>();
+        protected Queue<T> queue = new Queue<T>();
 
         public bool IsEmpty => queue.Count == 0;
 
-        public T Read()
+        public virtual T Read()
         {
             return queue.Dequeue();
         }
 
-        public void Write(T value)
+        public virtual void Write(T value)
         {
             queue.Enqueue(value);
         }
