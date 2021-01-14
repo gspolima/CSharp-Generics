@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures
 {
-    interface IBuffer<T>
+    interface IBuffer<T> : IEnumerable<T>
     {
         bool IsEmpty { get; }
 
