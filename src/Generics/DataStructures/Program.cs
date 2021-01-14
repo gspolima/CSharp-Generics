@@ -9,6 +9,10 @@ namespace DataStructures
             var circularBuffer = new Buffer<double>();
 
             ProcessInput(circularBuffer);
+            foreach (var item in circularBuffer)
+            {
+                Console.WriteLine(item);
+            }
             ProcessBuffer(circularBuffer);
         }
 
