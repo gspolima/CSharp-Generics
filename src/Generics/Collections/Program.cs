@@ -7,10 +7,10 @@ namespace Collections
     {
         static void Main(string[] args)
         {
-            var employeesByDepartment = new SortedDictionary<string, List<Employee>>();
+            var employeesByDepartment = new SortedDictionary<string, SortedSet<Employee>>();
 
             employeesByDepartment.Add("Software", 
-                new List<Employee>() { 
+                new SortedSet<Employee>(new EmployeeComparer()) { 
                     new Employee() { DepartmentId = 2, Name = "Gustavo" } });
 
             employeesByDepartment["Software"].Add(
@@ -20,17 +20,22 @@ namespace Collections
                 new Employee() { DepartmentId = 2, Name = "Antonio" });
 
             employeesByDepartment.Add("Legal",
-                new List<Employee>() {
+                new SortedSet<Employee>(new EmployeeComparer()) {
                     new Employee() { DepartmentId = 2, Name = "Mary" } });
+
+            employeesByDepartment["Legal"].Add(
+                new Employee() { DepartmentId = 2, Name = "Pedro" });
+
+            employeesByDepartment["Legal"].Add(
+                new Employee() { DepartmentId = 2, Name = "Pedro" });
 
             foreach (var item in employeesByDepartment)
             {
+                Console.WriteLine("----------------------");
+                Console.WriteLine($"{item.Key} department");
                 foreach (var employee in item.Value)
                 {
-                    Console.WriteLine(
-                        $"Department : {item.Key}" +
-                        $"{Environment.NewLine}{"Employee", -10} : {employee.Name}" +
-                        $"{Environment.NewLine}-----------------------");
+                    Console.WriteLine($"\t{employee.Name}");   
                 }
             }
         }
