@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Collections
+{
+    class DepartmentCollection : SortedDictionary<string, SortedSet<Employee>>
+    {
+        public DepartmentCollection Add(string departmentName, Employee employee)
+        {
+            if (!ContainsKey(departmentName))
+                Add(departmentName, new SortedSet<Employee>(new EmployeeComparer()));
+
+            this[departmentName].Add(employee);
+            return this;
+        }
+    }
+}
