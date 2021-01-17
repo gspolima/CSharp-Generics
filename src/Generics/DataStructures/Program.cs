@@ -9,7 +9,10 @@ namespace DataStructures
             var circularBuffer = new Buffer<double>();
 
             ProcessInput(circularBuffer);
-            foreach (var item in circularBuffer)
+            
+            var asInt = circularBuffer.AsEnumerableOf<int>();
+
+            foreach (var item in asInt)
             {
                 Console.WriteLine(item);
             }
