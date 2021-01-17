@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DataStructures
 {
@@ -32,6 +33,16 @@ namespace DataStructures
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public IEnumerable<TOutput> AsEnumerableOf<TOutput>()
+        {
+            var converter = TypeDescriptor.GetConverter(typeof(T));
+            foreach (var item in queue)
+            {
+                var result = converter.ConvertTo(item, typeof(TOutput));
+                yield return (TOutput)result;
+            }
         }
     }
 }

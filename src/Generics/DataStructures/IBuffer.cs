@@ -10,6 +10,8 @@ namespace DataStructures
 
         void Write(T value);
 
+        IEnumerable<TOutput> AsEnumerableOf<TOutput>();
+
         T Read();
     }
 }
